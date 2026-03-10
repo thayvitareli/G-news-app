@@ -1,11 +1,11 @@
-import { Text, View } from 'react-native';
+import { Pressable, Text, View } from 'react-native';
 import { Article } from '@/types';
 import { ImageBackground } from 'expo-image';
 import { formatTimeAgo } from '@/utils';
 
-export default function HeadlineCard({ article }: { article: Article }) {
+export default function HeadlineCard({ article, onNavigateToArticle }: { article: Article, onNavigateToArticle: (article: Article) => void }) {
   return (
-    <View className="mr-4 h-[360px] w-[300px] overflow-hidden rounded-xl">
+    <Pressable onPress={() => onNavigateToArticle(article)} className="mr-4 h-[360px] w-[300px] overflow-hidden rounded-xl">
       <ImageBackground
         source={{
           uri:
@@ -37,6 +37,6 @@ export default function HeadlineCard({ article }: { article: Article }) {
           </View>
         </View>
       </ImageBackground>
-    </View>
+    </Pressable>
   );
 }

@@ -33,7 +33,7 @@ export const HomeView = ({ onNavigateToArticle, onNavigateToSearch, breakingNews
               <Text className="text-2xl font-bold text-[#E1E1E1]">Breaking News</Text>
             </View>
             <Pressable onPress={onNavigateToSearch} className="text-[10px] font-bold uppercase tracking-widest text-[#00E5FF]">
-              Ver tudo
+                <Text>Ver tudo</Text>
             </Pressable>
           </View>
 

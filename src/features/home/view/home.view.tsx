@@ -14,8 +14,14 @@ interface HomeViewProps {
   isLoading: boolean;
   isLoadingBreakingNews: boolean;
 }
-export const HomeView = ({ onNavigateToArticle, onNavigateToSearch, breakingNews, lastNews, isLoading, isLoadingBreakingNews }: HomeViewProps) => {
- 
+export const HomeView = ({
+  onNavigateToArticle,
+  onNavigateToSearch,
+  breakingNews,
+  lastNews,
+  isLoading,
+  isLoadingBreakingNews,
+}: HomeViewProps) => {
   if (isLoading || isLoadingBreakingNews) {
     return <ActivityIndicator className="flex-1 items-center justify-center" />;
   }
@@ -32,8 +38,10 @@ export const HomeView = ({ onNavigateToArticle, onNavigateToSearch, breakingNews
               <View className="mr-2 h-6 w-1 bg-[#00E5FF]" />
               <Text className="text-2xl font-bold text-[#E1E1E1]">Breaking News</Text>
             </View>
-            <Pressable onPress={onNavigateToSearch} className="text-[10px] font-bold uppercase tracking-widest text-[#00E5FF]">
-                <Text>Ver tudo</Text>
+            <Pressable
+              onPress={onNavigateToSearch}
+              className="text-[10px] font-bold uppercase tracking-widest text-[#00E5FF]">
+              <Text>Ver tudo</Text>
             </Pressable>
           </View>
 
@@ -42,7 +50,11 @@ export const HomeView = ({ onNavigateToArticle, onNavigateToSearch, breakingNews
             contentContainerClassName="flex-grow px-5"
             showsHorizontalScrollIndicator={false}>
             {breakingNews?.map((article, index) => (
-              <HeadlineCard key={index} article={article} onNavigateToArticle={onNavigateToArticle} />
+              <HeadlineCard
+                key={index}
+                article={article}
+                onNavigateToArticle={onNavigateToArticle}
+              />
             ))}
           </ScrollView>
         </View>

@@ -2,11 +2,11 @@ import { StatusBar } from 'expo-status-bar';
 import { Text } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
-export default function SavedScreen  () {
+export default function SavedScreen() {
   return (
-    <SafeAreaView className="flex-1 items-center bg-background-dark justify-center">
+    <SafeAreaView className="flex-1 items-center justify-center bg-background-dark">
       <StatusBar style="auto" />
       <Text className="text-3xl text-white">Salvos</Text>
-    </SafeAreaView >
+    </SafeAreaView>
   );
 }

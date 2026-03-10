@@ -3,9 +3,17 @@ import { Article } from '@/types';
 import { ImageBackground } from 'expo-image';
 import { formatTimeAgo } from '@/utils';
 
-export default function HeadlineCard({ article, onNavigateToArticle }: { article: Article, onNavigateToArticle: (article: Article) => void }) {
+export default function HeadlineCard({
+  article,
+  onNavigateToArticle,
+}: {
+  article: Article;
+  onNavigateToArticle: (article: Article) => void;
+}) {
   return (
-    <Pressable onPress={() => onNavigateToArticle(article)} className="mr-4 h-[360px] w-[300px] overflow-hidden rounded-xl">
+    <Pressable
+      onPress={() => onNavigateToArticle(article)}
+      className="mr-4 h-[360px] w-[300px] overflow-hidden rounded-xl">
       <ImageBackground
         source={{
           uri:

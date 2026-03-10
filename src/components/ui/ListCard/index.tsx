@@ -3,9 +3,17 @@ import { Article } from '@/types';
 import { Image } from 'expo-image';
 import { formatTimeAgo } from '@/utils';
 
-export default function ListCard({ article, onNavigateToArticle }: { article: Article, onNavigateToArticle: (article: Article) => void }) {
+export default function ListCard({
+  article,
+  onNavigateToArticle,
+}: {
+  article: Article;
+  onNavigateToArticle: (article: Article) => void;
+}) {
   return (
-    <Pressable onPress={() => onNavigateToArticle(article)} className="mb-1 flex-row items-center gap-2 border-b border-slate-500 pb-2">
+    <Pressable
+      onPress={() => onNavigateToArticle(article)}
+      className="mb-1 flex-row items-center gap-2 border-b border-slate-500 pb-2">
       <View className="w-[70%] gap-1">
         <Text className="mb-1 text-lg font-bold text-white">{article.title}</Text>
         <Text numberOfLines={2} className="text-slate-500">

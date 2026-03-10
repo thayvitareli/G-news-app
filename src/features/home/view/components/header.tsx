@@ -1,5 +1,5 @@
 import { Text, View } from 'react-native';
-import dayjs from 'dayjs'
+import dayjs from 'dayjs';
 
 export const HomeHeader = () => (
   <View className="w-full flex-row items-center justify-between px-5 py-5">

@@ -3,13 +3,13 @@ import { Article } from '@/types';
 import { getDiscoverNews } from '@/service/news';
 
 export const CATEGORIES = [
-  { id: 'general', label: 'Geral' },
-  { id: 'technology', label: 'Tecnologia' },
-  { id: 'business', label: 'Negócios' },
-  { id: 'sports', label: 'Esportes' },
-  { id: 'science', label: 'Ciência' },
-  { id: 'health', label: 'Saúde' },
-  { id: 'entertainment', label: 'Entretenimento' },
+  { id: 'general', label: 'General' },
+  { id: 'technology', label: 'Technology' },
+  { id: 'business', label: 'Business' },
+  { id: 'sports', label: 'Sports' },
+  { id: 'science', label: 'Science' },
+  { id: 'health', label: 'Health' },
+  { id: 'entertainment', label: 'Entertainment' },
 ];
 
 export const useDiscoverModel = () => {

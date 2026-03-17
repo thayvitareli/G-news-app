@@ -118,7 +118,7 @@ export const ArticleView = ({
             <View>
               <Text className="font-semibold text-blue-400">{article.source.name}</Text>
               <Text className="text-xs text-slate-400">
-                Publicado {dayjs(article.publishedAt).format('D MMM')} • 5 min de leitura
+                Published {dayjs(article.publishedAt).format('MMM D')} • 5 min read
               </Text>
             </View>
           </View>
@@ -130,7 +130,7 @@ export const ArticleView = ({
           <Text
             className="mb-6 leading-relaxed text-slate-300"
             style={{ fontSize: 16 * fontMultiplier }}>
-            {article.description || 'Nenhuma descrição disponível para esta notícia.'}
+            {article.description || 'No description available for this article.'}
           </Text>
 
           {article.content && (
@@ -157,7 +157,7 @@ export const ArticleView = ({
           <View className="mb-4 mt-4">
             <View className="mb-6 flex-row items-center">
               <View className="mr-3 h-6 w-1 bg-blue-400" />
-              <Text className="text-xl font-bold text-white">Leia Também</Text>
+              <Text className="text-xl font-bold text-white">Related News</Text>
             </View>
 
             {relatedNews?.slice(0, 3).map((item, index) => (

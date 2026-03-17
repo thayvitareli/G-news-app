@@ -29,7 +29,7 @@ export const DiscoverView = ({ model, onNavigateToArticle }: DiscoverViewProps) 
       
       {/* Header */}
       <View className="px-5 py-4 flex-row items-center justify-between">
-        <Text className="text-3xl font-bold text-white font-display">Explorar</Text>
+        <Text className="text-3xl font-bold text-white font-display">Explore</Text>
       </View>
 
       <ScrollView showsVerticalScrollIndicator={false} className="flex-1">
@@ -39,7 +39,7 @@ export const DiscoverView = ({ model, onNavigateToArticle }: DiscoverViewProps) 
             <Ionicons name="search" size={20} color="#9CA3AF" />
             <TextInput
               className="ml-3 flex-1 text-base placeholder:text-gray-400 text-white"
-              placeholder="Buscar notícias..."
+              placeholder="Search news..."
               placeholderTextColor="#9CA3AF"
               value={searchQuery}
               onChangeText={setSearchQuery}
@@ -51,7 +51,7 @@ export const DiscoverView = ({ model, onNavigateToArticle }: DiscoverViewProps) 
         {/* Categories */}
         <View className="mb-6">
           <Text className="px-5 mb-3 text-xs font-bold uppercase tracking-widest text-gray-400">
-            Escolher Categoria
+            Choose Category
           </Text>
           <ScrollView
             horizontal
@@ -81,7 +81,7 @@ export const DiscoverView = ({ model, onNavigateToArticle }: DiscoverViewProps) 
         <View className="px-5">
           <View className="mb-4 flex-row items-center gap-2">
             <Text className="text-2xl font-bold text-white font-display">
-              Resultados Recentes
+              Recent Results
             </Text>
             <View className="h-2 w-2 rounded-full bg-[#007AFF]" />
           </View>
@@ -100,13 +100,13 @@ export const DiscoverView = ({ model, onNavigateToArticle }: DiscoverViewProps) 
               {articles.length >= 10 && (
                 <View className="items-center mt-6">
                   <ActivityIndicator color="#007AFF" />
-                  <Text className="text-gray-400 text-sm mt-3">Carregando mais notícias...</Text>
+                  <Text className="text-gray-400 text-sm mt-3">Loading more news...</Text>
                 </View>
               )}
             </View>
           ) : (
             <Text className="mt-10 text-center text-gray-400">
-              Nenhuma notícia encontrada para estes filtros.
+              No news found for these filters.
             </Text>
           )}
         </View>

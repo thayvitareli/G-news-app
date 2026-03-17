@@ -41,7 +41,7 @@ export const HomeView = ({
             <Pressable
               onPress={onNavigateToSearch}
               className="text-[10px] font-bold uppercase tracking-widest text-[#00E5FF]">
-              <Text>Ver tudo</Text>
+              <Text>See all</Text>
             </Pressable>
           </View>
 

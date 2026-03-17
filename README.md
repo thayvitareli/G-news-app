@@ -1,76 +1,76 @@
 # GNews App 📰
 
-Bem-vindo ao repositório do **GNews**, um aplicativo de agregação de notícias construído usando **React Native** e **Expo**. O aplicativo permite aos usuários explorar as principais manchetes, pesquisar notícias por categoria e salvar artigos para leitura posterior.
+Welcome to the **GNews** repository, a news aggregation app built using **React Native** and **Expo**. The app allows users to explore top headlines, search for news by category, and save articles to read later.
 
-## 🚀 Funcionalidades
+## 🚀 Features
 
-- **Home Feed**: Explore as principais manchetes (Top Headlines) assim que abrir o aplicativo.
-- **Discover (Descobrir)**: Filtre notícias por categorias ou busque por palavras-chave específicas.
-- **Detalhes do Artigo**: Veja a notícia completa com uma interface de leitura limpa, além de poder ajustar o tamanho da fonte.
-- **Artigos Salvos**: Adicione artigos aos favoritos para ler mais tarde. O estado dos artigos é salvo globalmente.
+- **Home Feed**: Explore the top headlines right when you open the app.
+- **Discover**: Filter news by categories or search for specific keywords.
+- **Article Details**: Read the full article with a clean reading interface, plus the ability to adjust the font size.
+- **Saved Articles**: Bookmark articles to read later. The article state is saved globally.
 
-## 🛠️ Tecnologias e Bibliotecas
+## 🛠️ Technologies and Libraries
 
-Este projeto foi construído usando tecnologias modernas e as melhores práticas do ecossistema React/React Native:
+This project was built using modern technologies and the best practices of the React/React Native ecosystem:
 
 - **Framework**: [Expo SDK 54](https://expo.dev/) & [React Native 0.81](https://reactnative.dev/)
-- **Roteamento**: [Expo Router](https://docs.expo.dev/router/introduction/) (Navegação baseada em arquivos estáticos e pastas `app/`)
-- **Estilização**: [NativeWind](https://www.nativewind.dev/) (Tailwind CSS para React Native)
-- **Gerenciamento de Estado**: [Zustand](https://docs.pmnd.rs/zustand/getting-started/introduction) (Para gerenciar a lista de artigos salvos)
+- **Routing**: [Expo Router](https://docs.expo.dev/router/introduction/) (Folder-based navigation using the `app/` directory)
+- **Styling**: [NativeWind](https://www.nativewind.dev/) (Tailwind CSS for React Native)
+- **State Management**: [Zustand](https://docs.pmnd.rs/zustand/getting-started/introduction) (To manage the list of saved articles)
 - **Data Fetching**: [React Query (TanStack Query)](https://tanstack.com/query/latest) & [Axios](https://axios-http.com/)
-- **Outras bibliotecas**: `dayjs` (formatação de datas), `@expo/vector-icons` (ícones).
+- **Other libraries**: `dayjs` (date formatting), `@expo/vector-icons` (icons).
 
-## 🏗️ Arquitetura (MVVM)
+## 🏗️ Architecture (MVVM)
 
-Este projeto adota o padrão de arquitetura **Model-View-ViewModel (MVVM)**, que promove uma clara separação de responsabilidades (Separation of Concerns):
+This project adopts the **Model-View-ViewModel (MVVM)** architecture pattern, which promotes a clear Separation of Concerns:
 
-A estrutura do projeto dentro de `src/` é a seguinte:
+The project structure within `src/` is as follows:
 
-- **`features/`**: O coração da aplicação. Cada tela/feature principal (Home, Discover, Article, Saved) é um módulo aqui.
-  - **View (`*.view.tsx`)**: O componente visual de UI. Não contém regras de negócio.
-  - **Model/ViewModel (`*.model.tsx`/hook)**: Gerencia o estado e as regras de negócio para a `View`. Ele interage com os `services` e o `store`.
-- **`app/`**: Contém o roteamento da aplicação usando Expo Router, servindo como pontos de entrada das telas.
-- **`components/`**: Componentes reutilizáveis por todo o projeto (ex: cartões de notícias).
-- **`service/`**: Configuração do Axios e funções que fazem as chamadas para APIs externas (ex: `news/index.ts` que se conecta com a NewsAPI).
-- **`store/`**: Estado global da aplicação com Zustand (`useSavedArticlesStore.ts`).
+- **`features/`**: The core of the application. Each main screen/feature (Home, Discover, Article, Saved) is a module here.
+  - **View (`*.view.tsx`)**: The visual UI component. It contains no business rules.
+  - **Model/ViewModel (`*.model.tsx`/hook)**: Manages state and business rules for the `View`. It interacts with `services` and the `store`.
+- **`app/`**: Contains the application routing using Expo Router, serving as the entry points for screens.
+- **`components/`**: Reusable components across the project (e.g., news cards).
+- **`service/`**: Axios configuration and functions that make external API calls (e.g., `news/index.ts` connecting with the NewsAPI).
+- **`store/`**: Global application state using Zustand (`useSavedArticlesStore.ts`).
 
-## ⚙️ Como replicar e rodar o projeto localmente
+## ⚙️ How to Setup and Run the Project Locally
 
-Siga os passos abaixo para configurar e rodar o ambiente de desenvolvimento na sua máquina.
+Follow the steps below to configure and run the development environment on your machine.
 
-### Pré-requisitos
-- Ter o **Node.js** (v18+) instalado na máquina.
-- Conta e chave de API gratuita no [NewsAPI](https://newsapi.org/).
+### Prerequisites
+- Have **Node.js** (v18+) installed.
+- A free account and API key from [NewsAPI](https://newsapi.org/).
 
-### Passo a passo
+### Step-by-Step
 
-1. **Clone este repositório** e acesse a pasta do projeto:
+1. **Clone this repository** and enter the project folder:
     ```bash
-    git clone <url-do-repositorio>
+    git clone <repository-url>
     cd my-expo-app
     ```
 
-2. **Instale as dependências**:
+2. **Install dependencies**:
     ```bash
     npm install
     ```
 
-3. **Configuração das Variáveis de Ambiente**:
-    - Renomeie o arquivo `.exemple.env` para `.env` (ou crie um novo arquivo `.env` na raiz do projeto).
-    - Insira a sua chave de API obtida no NewsAPI:
+3. **Environment Variables Configuration**:
+    - Rename the `.exemple.env` file to `.env` (or create a new `.env` file in the project root).
+    - Insert your API key obtained from NewsAPI:
     ```env
-    EXPO_PUBLIC_API_KEY=sua_chave_api_aqui
+    EXPO_PUBLIC_API_KEY=your_api_key_here
     ```
 
-4. **Inicie o servidor de desenvolvimento do Expo**:
+4. **Start the Expo development server**:
     ```bash
     npx expo start
     ```
 
-5. **Acesse o aplicativo**:
-    - Pressione `i` no terminal para rodar no simulador do **iOS** (apenas no macOS).
-    - Pressione `a` para rodar no emulador do **Android**.
-    - Ou escaneie o código QR gerado no terminal usando o aplicativo **Expo Go** no seu celular físico.
+5. **Access the application**:
+    - Press `i` in the terminal to run on the **iOS** simulator (macOS only).
+    - Press `a` to run on the **Android** emulator.
+    - Or scan the generated QR code in the terminal using the **Expo Go** app on your physical mobile device.
 
 ---
-Desenvolvido com 💙 usando Expo.
+Developed with 💙 using Expo.

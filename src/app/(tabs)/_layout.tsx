@@ -10,7 +10,7 @@ export default function TabLayout() {
         tabBarStyle: { backgroundColor: tokens.colors['background-dark'] },
       }}>
       <Tabs.Screen
-        name="index"
+        name="home"
         options={{
           tabBarIcon: ({ focused, color, size }) => (
             <MaterialIcons name="home" size={size} color={color} />

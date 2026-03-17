@@ -2,10 +2,13 @@ import { useLocalSearchParams, useRouter } from 'expo-router';
 import { useMemo } from 'react';
 import { Article } from '@/types';
 import useGetNews from '@/hooks/use-get-news';
+import { useSavedArticlesStore } from '@/store/useSavedArticlesStore';
 
 export const useArticleModel = () => {
   const router = useRouter();
   const { article: articleParam } = useLocalSearchParams();
+
+  const toggleSavedArticle = useSavedArticlesStore((state) => state.toggleSavedArticle);
 
   // Use existing news fetchhook to mock related articles
   const { data: relatedNews } = useGetNews();
@@ -34,10 +37,22 @@ export const useArticleModel = () => {
     router.setParams({ article: JSON.stringify(relatedArticle) });
   };
 
+  const savedArticles = useSavedArticlesStore((state) => state.savedArticles);
+
+  const isSaved = article ? savedArticles.some((a) => a.url === article.url) : false;
+
+  const handleToggleSave = () => {
+    if (article) {
+      toggleSavedArticle(article);
+    }
+  };
+
   return {
     article,
     relatedNews: relatedNews?.articles || [],
+    isSaved,
     handleGoBack,
     handleNavigateToRelatedArticle,
+    handleToggleSave,
   };
 };

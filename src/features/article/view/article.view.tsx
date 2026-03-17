@@ -7,6 +7,7 @@ import {
   useWindowDimensions,
   Platform,
 } from 'react-native';
+import { useState } from 'react';
 import { Image } from 'expo-image';
 import { StatusBar } from 'expo-status-bar';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
@@ -19,18 +20,27 @@ import { LinearGradient } from 'expo-linear-gradient';
 interface ArticleViewProps {
   article: Article | null;
   relatedNews: Article[] | undefined;
+  isSaved: boolean;
   handleGoBack: () => void;
   handleNavigateToRelatedArticle: (article: Article) => void;
+  handleToggleSave: () => void;
 }
 
 export const ArticleView = ({
   article,
   relatedNews,
+  isSaved,
   handleGoBack,
   handleNavigateToRelatedArticle,
+  handleToggleSave,
 }: ArticleViewProps) => {
   const insets = useSafeAreaInsets();
   const { width } = useWindowDimensions();
+  const [fontMultiplier, setFontMultiplier] = useState(1);
+
+  const toggleFontSize = () => {
+    setFontMultiplier((prev) => (prev >= 1.5 ? 1 : prev + 0.25));
+  };
 
   if (!article) {
     return (
@@ -77,11 +87,22 @@ export const ArticleView = ({
               <Feather name="chevron-left" size={24} color="white" />
             </Pressable>
 
-          
-              <Pressable className="h-10 w-10 items-center justify-center rounded-full bg-black/40 backdrop-blur-md">
-                <Feather name="bookmark" size={20} color="white" />
+            <View className="flex-row gap-3">
+              <Pressable
+                onPress={toggleFontSize}
+                className="h-10 w-10 items-center justify-center rounded-full bg-black/40 backdrop-blur-md">
+                <Ionicons name="text" size={20} color="white" />
               </Pressable>
-         
+              <Pressable
+                onPress={handleToggleSave}
+                className="h-10 w-10 items-center justify-center rounded-full bg-black/40 backdrop-blur-md">
+                <Ionicons
+                  name={isSaved ? 'bookmark' : 'bookmark-outline'}
+                  size={20}
+                  color={isSaved ? '#00E5FF' : 'white'}
+                />
+              </Pressable>
+            </View>
           </View>
         </View>
 
@@ -106,12 +127,16 @@ export const ArticleView = ({
           <Text className="mb-6 text-3xl font-bold leading-tight text-white">{article.title}</Text>
 
           {/* Text content - mocking the initial text if content is empty or incomplete */}
-          <Text className="mb-6 text-base leading-relaxed text-slate-300">
+          <Text
+            className="mb-6 leading-relaxed text-slate-300"
+            style={{ fontSize: 16 * fontMultiplier }}>
             {article.description || 'Nenhuma descrição disponível para esta notícia.'}
           </Text>
 
           {article.content && (
-            <Text className="mb-8 text-base leading-relaxed text-slate-300">
+            <Text
+              className="mb-8 leading-relaxed text-slate-300"
+              style={{ fontSize: 16 * fontMultiplier }}>
               {article.content}
             </Text>
           )}
@@ -120,7 +145,9 @@ export const ArticleView = ({
           {article.content && (
             <View className="mb-8 flex-row pr-4">
               <View className="mr-4 w-1 bg-blue-400" />
-              <Text className="text-lg italic tracking-wide text-slate-200">
+              <Text
+                className="italic tracking-wide text-slate-200"
+                style={{ fontSize: 18 * fontMultiplier }}>
                 {article.content}
               </Text>
             </View>
@@ -143,7 +170,6 @@ export const ArticleView = ({
           </View>
         </View>
       </ScrollView>
-
     </View>
   );
 };

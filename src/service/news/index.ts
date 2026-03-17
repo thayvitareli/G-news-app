@@ -22,3 +22,16 @@ export async function getTopHeadlines() {
     console.log('getTopHeadlines error', isAxiosError(error) ? error?.response?.data : error);
   }
 }
+
+export async function getDiscoverNews(category: string, query: string = '') {
+  try {
+    const response = await axios.get<NewsResponse>(
+      `https://newsapi.org/v2/top-headlines?country=us&category=${category}${
+        query ? `&q=${query}` : ''
+      }&apiKey=${process.env.EXPO_PUBLIC_API_KEY}`
+    );
+    return response.data;
+  } catch (error) {
+    console.log('getDiscoverNews error', isAxiosError(error) ? error?.response?.data : error);
+  }
+}

@@ -1,12 +1,17 @@
-import { StatusBar } from 'expo-status-bar';
-import { Text } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
+import { useDiscoverModel } from '@/features/discover/view/discover.model';
+import { DiscoverView } from '@/features/discover/view/discover.view';
+import { router } from 'expo-router';
+import { Article } from '@/types';
 
 export default function DiscoverScreen() {
-  return (
-    <SafeAreaView className="flex-1 items-center justify-center bg-background-dark">
-      <StatusBar style="auto" />
-      <Text className="text-3xl text-white">Discover</Text>
-    </SafeAreaView>
-  );
+  const model = useDiscoverModel();
+
+  const handleNavigateToArticle = (article: Article) => {
+    router.push({
+      pathname: '/article',
+      params: { article: JSON.stringify(article) },
+    });
+  };
+
+  return <DiscoverView model={model} onNavigateToArticle={handleNavigateToArticle} />;
 }

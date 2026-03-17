@@ -9,6 +9,10 @@ Welcome to the **GNews** repository, a news aggregation app built using **React 
 - **Article Details**: Read the full article with a clean reading interface, plus the ability to adjust the font size.
 - **Saved Articles**: Bookmark articles to read later. The article state is saved globally.
 
+
+https://github.com/user-attachments/assets/dfa4ab13-0097-479c-badc-edd4acc3532c
+
+
 ## 🛠️ Technologies and Libraries
 
 This project was built using modern technologies and the best practices of the React/React Native ecosystem:
